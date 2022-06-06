@@ -6,11 +6,13 @@ class Coordinate
   def initialize(col, row)
     @row = row
     @col = col
+    @max_row = 6
+    @max_col = 7
   end
 
   def up
     up_coord_height = row + 1
-    up_coord_height < 7 ? Coordinate.new(col, up_coord_height) : nil
+    up_coord_height < @max_row ? Coordinate.new(col, up_coord_height) : NullCoordinate.new
   end
 
   def ==(other)
