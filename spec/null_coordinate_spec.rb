@@ -5,10 +5,38 @@ require_relative '../lib/library'
 describe NullCoordinate do
   subject(:null_coord) { described_class.new }
 
+  describe '#position' do
+    it 'returns nil' do
+      null_position = null_coord.position
+      expect(null_position).to be_nil
+    end
+  end
+
   describe '#up' do
     it 'returns a NullCoordinate' do
       up_coord = null_coord.up
       expect(up_coord).to be_instance_of(described_class)
+    end
+  end
+
+  describe '#down' do
+    it 'returns a NullCoordinate' do
+      down_coord = null_coord.down
+      expect(down_coord).to be_instance_of(described_class)
+    end
+  end
+
+  describe '#left' do
+    it 'returns a NullCoordinate' do
+      left_coord = null_coord.left
+      expect(left_coord).to be_instance_of(described_class)
+    end
+  end
+
+  describe '#right' do
+    it 'returns a NullCoordinate' do
+      right_coord = null_coord.right
+      expect(right_coord).to be_instance_of(described_class)
     end
   end
 end
