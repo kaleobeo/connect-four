@@ -5,10 +5,17 @@ require_relative '../lib/library'
 describe NullCoordinate do
   subject(:null_coord) { described_class.new }
 
-  describe '#position' do
+  describe '#row' do
     it 'returns nil' do
-      null_position = null_coord.position
-      expect(null_position).to be_nil
+      null_row = null_coord.row
+      expect(null_row).to be_nil
+    end
+  end
+
+  describe '#col' do
+    it 'returns nil' do
+      null_col = null_coord.col
+      expect(null_col).to be_nil
     end
   end
 

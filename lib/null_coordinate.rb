@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 class NullCoordinate
-  def position
-    nil
-  end
-
+  attr_reader :row, :col
+  
   def up
     NullCoordinate.new
   end
