@@ -1,6 +1,5 @@
-
 class Checker
-  attr_reader :color
+  attr_reader :color, :symbol
 
   def initialize(color, symbol = "\u25CF")
     @color = color
