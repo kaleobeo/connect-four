@@ -22,7 +22,7 @@ class Coordinate
 
   def left
     left_coord_col = col - 1
-    left_coord_col.between?(1, 7) ? Coordinate.new(left_coord_col, row) : NullCoordinate.new 
+    left_coord_col.between?(1, 7) ? Coordinate.new(left_coord_col, row) : NullCoordinate.new
   end
 
   def right

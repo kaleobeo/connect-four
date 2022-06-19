@@ -6,7 +6,7 @@ describe Cell do
   describe '#place_symbol' do
     subject(:place_cell) { described_class.new(checker_class) }
 
-    let(:checker_class) { double('checker_class') }
+    let(:checker_class) { class_double(Checker) }
 
     before do
       allow(checker_class).to receive(:new).and_return 'foo'
