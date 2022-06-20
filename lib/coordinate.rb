@@ -35,4 +35,8 @@ class Coordinate
 
     col == other.col && row == other.row
   end
+
+  def out_of_bounds?
+    row > @max_row || col > @max_col
+  end
 end

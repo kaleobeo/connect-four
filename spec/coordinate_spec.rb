@@ -86,4 +86,22 @@ describe Coordinate do
       end
     end
   end
+
+  describe '#out_of_bounds?' do
+    context 'when coordinate is out of bounds' do
+      subject(:out_bounds_coord) { described_class.new(1, 7) }
+
+      it 'returns true' do
+        expect(out_bounds_coord.out_of_bounds?).to eq true
+      end
+    end
+
+    context 'when coordinate is in bounds' do
+      subject(:in_bounds_coord) { described_class.new(3, 4) }
+
+      it 'returns false' do
+        expect(in_bounds_coord.out_of_bounds?).to eq false
+      end
+    end
+  end
 end
