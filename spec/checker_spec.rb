@@ -22,4 +22,27 @@ describe Checker do
       expect(symbol).to have_received(:send).with(:red)
     end
   end
+
+  describe '#==' do
+    subject(:red_checker) { described_class.new(:red) }
+
+    context 'when comparing two Checkers' do
+      let(:other_red_checker) { described_class.new(:red) }
+      let(:yellow_checker) { described_class.new(:yellow) }
+
+      it 'returns true when the checkers have the same color and symbol' do
+        expect(red_checker).to eq other_red_checker
+      end
+
+      it 'returns false when checkers have different colors' do
+        expect(red_checker).not_to eq yellow_checker
+      end
+    end
+
+    context 'when comparing a checker with a different type of object' do
+      it 'returns false' do
+        expect(red_checker).not_to eq [1, 2, 3]
+      end
+    end
+  end
 end

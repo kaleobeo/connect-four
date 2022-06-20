@@ -9,4 +9,10 @@ class Checker
   def to_s
     @symbol.send(color.to_sym)
   end
+
+  def ==(other)
+    return super unless other.is_a?(Checker)
+
+    color == other.color && symbol == other.symbol
+  end
 end
