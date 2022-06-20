@@ -40,4 +40,26 @@ describe Cell do
       end
     end
   end
+
+  describe '#piece_color' do
+    context 'when cell is empty' do
+      subject(:empty_cell) { described_class.new(Checker) }
+
+      it 'returns nil' do
+        expect(empty_cell.piece_color).to be_nil
+      end
+    end
+
+    context 'when cell is filled' do
+      subject(:filled_cell) { described_class.new(Checker) }
+
+      before do
+        filled_cell.place_symbol(:red)
+      end
+
+      it 'returns the piece\'s color' do
+        expect(filled_cell.piece_color).to eq :red
+      end
+    end
+  end
 end

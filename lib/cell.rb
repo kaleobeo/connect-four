@@ -9,6 +9,12 @@ class Cell
   end
 
   def place_symbol(color)
-    @piece ||= @checker_class.new(color)
+    return false if @piece
+
+    @piece = @checker_class.new(color)
+  end
+
+  def piece_color
+    piece&.color
   end
 end
