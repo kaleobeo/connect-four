@@ -3,90 +3,6 @@
 require_relative '../lib/library'
 
 describe Coordinate do
-  describe '#up' do
-    context 'when the position above is in bounds' do
-      subject(:up_coord) { described_class.new(4, 3) }
-
-      it 'returns the Coordinate above it' do
-        coord = up_coord.up
-        expected = described_class.new(4, 4)
-        expect(coord).to eq expected
-      end
-    end
-
-    context 'when the position above is not in bounds' do
-      subject(:up_coord) { described_class.new(1, 6) }
-
-      it 'return a NullCoordinate' do
-        coord = up_coord.up
-        expect(coord).to be_instance_of(NullCoordinate)
-      end
-    end
-  end
-
-  describe '#down' do
-    context 'when the position below is in bounds' do
-      subject(:valid_down) { described_class.new(4, 3) }
-
-      it 'returns the Coordinate below it' do
-        coord = valid_down.down
-        expected = described_class.new(4, 2)
-        expect(coord).to eq expected
-      end
-    end
-
-    context 'when the position below is not in bounds' do
-      subject(:invalid_down) { described_class.new(1, 1) }
-
-      it 'return a NullCoordinate' do
-        coord = invalid_down.down
-        expect(coord).to be_instance_of(NullCoordinate)
-      end
-    end
-  end
-
-  describe '#left' do
-    context 'when the position to the left is in bounds' do
-      subject(:valid_left) { described_class.new(4, 3) }
-
-      it 'returns the Coordinate left of it' do
-        coord = valid_left.left
-        expected = described_class.new(3, 3)
-        expect(coord).to eq expected
-      end
-    end
-
-    context 'when the position left is not in bounds' do
-      subject(:invalid_left) { described_class.new(1, 1) }
-
-      it 'return a NullCoordinate' do
-        coord = invalid_left.left
-        expect(coord).to be_instance_of(NullCoordinate)
-      end
-    end
-  end
-
-  describe '#right' do
-    context 'when the position to the right is in bounds' do
-      subject(:valid_right) { described_class.new(4, 3) }
-
-      it 'returns the Coordinate left of it' do
-        coord = valid_right.right
-        expected = described_class.new(5, 3)
-        expect(coord).to eq expected
-      end
-    end
-
-    context 'when the position to the right is not in bounds' do
-      subject(:invalid_right) { described_class.new(7, 1) }
-
-      it 'return a NullCoordinate' do
-        coord = invalid_right.right
-        expect(coord).to be_instance_of(NullCoordinate)
-      end
-    end
-  end
-
   describe '#out_of_bounds?' do
     context 'when coordinate is out of bounds' do
       subject(:out_bounds_coord) { described_class.new(1, 7) }
@@ -101,6 +17,62 @@ describe Coordinate do
 
       it 'returns false' do
         expect(in_bounds_coord.out_of_bounds?).to eq false
+      end
+    end
+  end
+
+  describe '#vert_line' do
+    context 'when the coordinate is in the middle of the board' do
+      subject(:vert_line_middle) { described_class.new(4, 3) }
+
+      it 'returns the proper list of coordinates' do
+        expected = [
+          described_class.new(4, 6),
+          described_class.new(4, 5),
+          described_class.new(4, 4),
+          described_class.new(4, 3),
+          described_class.new(4, 2),
+          described_class.new(4, 1),
+          NullCoordinate.new
+        ]
+        vert_arr = vert_line_middle.vert_line
+        expect(vert_arr).to eq expected
+      end
+    end
+
+    context 'when the coordinate is at the top of the board' do
+      subject(:vert_line_top) { described_class.new(3, 6) }
+
+      it 'returns the proper list of coordinates' do
+        expected = [
+          NullCoordinate.new,
+          NullCoordinate.new,
+          NullCoordinate.new,
+          described_class.new(3, 6),
+          described_class.new(3, 5),
+          described_class.new(3, 4),
+          described_class.new(3, 3)
+        ]
+        vert_arr = vert_line_top.vert_line
+        expect(vert_arr).to eq expected
+      end
+    end
+
+    context 'when the coordinate is at the bottom of the board' do
+      subject(:vert_line_bottom) { described_class.new(3, 1) }
+
+      it 'returns the proper list of coordinates' do
+        expected = [
+          described_class.new(3, 4),
+          described_class.new(3, 3),
+          described_class.new(3, 2),
+          described_class.new(3, 1),
+          NullCoordinate.new,
+          NullCoordinate.new,
+          NullCoordinate.new
+        ]
+        vert_arr = vert_line_bottom.vert_line
+        expect(vert_arr).to eq expected
       end
     end
   end

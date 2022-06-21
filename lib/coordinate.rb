@@ -10,9 +10,25 @@ class Coordinate
     @max_col = 7
   end
 
+  def ==(other)
+    return super unless other.is_a?(Coordinate)
+
+    col == other.col && row == other.row
+  end
+
+  def out_of_bounds?
+    row > @max_row || col > @max_col
+  end
+
+  def vert_line
+    [up.up.up, up.up, up, self, down, down.down, down.down.down]
+  end
+
+  protected
+
   def up
     up_coord_height = row + 1
-    up_coord_height < @max_row ? Coordinate.new(col, up_coord_height) : NullCoordinate.new
+    up_coord_height <= @max_row ? Coordinate.new(col, up_coord_height) : NullCoordinate.new
   end
 
   def down
@@ -28,15 +44,5 @@ class Coordinate
   def right
     right_coord_col = col + 1
     right_coord_col.between?(1, 7) ? Coordinate.new(right_coord_col, row) : NullCoordinate.new
-  end
-
-  def ==(other)
-    return super unless other.is_a?(Coordinate)
-
-    col == other.col && row == other.row
-  end
-
-  def out_of_bounds?
-    row > @max_row || col > @max_col
   end
 end
