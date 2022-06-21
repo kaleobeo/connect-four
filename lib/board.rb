@@ -14,7 +14,11 @@ class Board
     return false if pos.out_of_bounds?
 
     current_cell = at(pos)
-    drop_checker(color, col, row + 1) unless current_cell.place_symbol(color)
+    if current_cell.place_symbol(color)
+      current_cell
+    else
+      drop_checker(color, col, row + 1)
+    end
   end
 
   private

@@ -53,10 +53,6 @@ describe Board do
         cell = drop_board.at(Coordinate.new(1, 1))
         expect(cell.piece_color).to eq :red
       end
-
-      it 'returns nil' do
-        expect(drop_board.drop_checker(:red, 1)).to be_nil
-      end
     end
     
     context 'when there is a small number of checkers already in the column' do
