@@ -76,4 +76,60 @@ describe Coordinate do
       end
     end
   end
+
+  describe '#horiz_line' do
+    context 'when the coordinate is in the middle of the board' do
+      subject(:horiz_line_middle) { described_class.new(4, 3) }
+
+      it 'returns the proper list of coordinates' do
+        expected = [
+          described_class.new(1, 3),
+          described_class.new(2, 3),
+          described_class.new(3, 3),
+          described_class.new(4, 3),
+          described_class.new(5, 3),
+          described_class.new(6, 3),
+          described_class.new(7, 3)
+        ]
+        horiz_arr = horiz_line_middle.horiz_line
+        expect(horiz_arr).to eq expected
+      end
+    end
+
+    context 'when the coordinate is at the left of the board' do
+      subject(:horiz_line_left) { described_class.new(1, 6) }
+
+      it 'returns the proper list of coordinates' do
+        expected = [
+          NullCoordinate.new,
+          NullCoordinate.new,
+          NullCoordinate.new,
+          described_class.new(1, 6),
+          described_class.new(2, 6),
+          described_class.new(3, 6),
+          described_class.new(4, 6)
+        ]
+        horiz_arr = horiz_line_left.horiz_line
+        expect(horiz_arr).to eq expected
+      end
+    end
+
+    context 'when the coordinate is at the right of the board' do
+      subject(:horiz_line_right) { described_class.new(7, 6) }
+
+      it 'returns the proper list of coordinates' do
+        expected = [
+          described_class.new(4, 6),
+          described_class.new(5, 6),
+          described_class.new(6, 6),
+          described_class.new(7, 6),
+          NullCoordinate.new,
+          NullCoordinate.new,
+          NullCoordinate.new
+        ]
+        horiz_arr = horiz_line_right.horiz_line
+        expect(horiz_arr).to eq expected
+      end
+    end
+  end
 end

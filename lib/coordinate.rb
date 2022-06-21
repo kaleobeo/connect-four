@@ -24,6 +24,10 @@ class Coordinate
     [up.up.up, up.up, up, self, down, down.down, down.down.down]
   end
 
+  def horiz_line
+    [left.left.left, left.left, left, self, right, right.right, right.right.right]
+  end
+
   protected
 
   def up
