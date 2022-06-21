@@ -18,4 +18,8 @@ class NullCoordinate
   def right
     NullCoordinate.new
   end
+
+  def ==(other)
+    other.is_a?(NullCoordinate)
+  end
 end
