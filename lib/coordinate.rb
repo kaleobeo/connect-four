@@ -27,6 +27,14 @@ class Coordinate
   def horiz_line
     [left.left.left, left.left, left, self, right, right.right, right.right.right]
   end
+  
+  def diag_line_ne_sw
+    [diag_ne.diag_ne.diag_ne, diag_ne.diag_ne, diag_ne, self, diag_sw, diag_sw.diag_sw, diag_sw.diag_sw.diag_sw]
+  end
+
+  def diag_line_nw_se
+    [diag_nw.diag_nw.diag_nw, diag_nw.diag_nw, diag_nw, self, diag_se, diag_se.diag_se, diag_se.diag_se.diag_se]
+  end
 
   protected
 
@@ -48,5 +56,21 @@ class Coordinate
   def right
     right_coord_col = col + 1
     right_coord_col.between?(1, 7) ? Coordinate.new(right_coord_col, row) : NullCoordinate.new
+  end
+
+  def diag_ne
+    up.right
+  end
+
+  def diag_nw
+    up.left
+  end
+
+  def diag_sw
+    down.left
+  end
+
+  def diag_se
+    down.right
   end
 end

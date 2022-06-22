@@ -4,19 +4,35 @@ class NullCoordinate
   attr_reader :row, :col
   
   def up
-    NullCoordinate.new
+    self
   end
 
   def down
-    NullCoordinate.new
+    self
   end
 
   def left
-    NullCoordinate.new
+    self
   end
 
   def right
-    NullCoordinate.new
+    self
+  end
+
+  def diag_ne
+    self
+  end
+
+  def diag_nw
+    self
+  end
+
+  def diag_sw
+    self
+  end
+
+  def diag_se
+    self
   end
 
   def ==(other)

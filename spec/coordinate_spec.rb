@@ -132,4 +132,116 @@ describe Coordinate do
       end
     end
   end
+
+  describe '#diag_line_nw_se' do
+    context 'when the coordinate is in the middle of the board' do
+      subject(:diag_line_middle) { described_class.new(4, 3) }
+
+      it 'returns the proper list of coordinates' do
+        expected = [
+          described_class.new(1, 6),
+          described_class.new(2, 5),
+          described_class.new(3, 4),
+          described_class.new(4, 3),
+          described_class.new(5, 2),
+          described_class.new(6, 1),
+          NullCoordinate.new
+        ]
+        diag_arr = diag_line_middle.diag_line_nw_se
+        expect(diag_arr).to eq expected
+      end
+    end
+
+    context 'when the coordinate is at the top right of the board' do
+      subject(:diag_line_top_left) { described_class.new(7, 6) }
+
+      it 'returns the proper list of coordinates' do
+        expected = [
+          NullCoordinate.new,
+          NullCoordinate.new,
+          NullCoordinate.new,
+          described_class.new(7, 6),
+          NullCoordinate.new,
+          NullCoordinate.new,
+          NullCoordinate.new
+          ]
+        diag_arr = diag_line_top_left.diag_line_nw_se
+        expect(diag_arr).to eq expected
+      end
+    end
+
+    context 'when the coordinate is at the bottom right of the board' do
+      subject(:diag_line_bot_right) { described_class.new(7, 1) }
+
+      it 'returns the proper list of coordinates' do
+        expected = [
+          described_class.new(4, 4),
+          described_class.new(5, 3),
+          described_class.new(6, 2),
+          described_class.new(7, 1),
+          NullCoordinate.new,
+          NullCoordinate.new,
+          NullCoordinate.new
+        ]
+        diag_arr = diag_line_bot_right.diag_line_nw_se
+        expect(diag_arr).to eq expected
+      end
+    end
+  end
+
+  describe '#diag_line_ne_sw' do
+    context 'when the coordinate is in the middle of the board' do
+      subject(:diag_line_middle) { described_class.new(4, 3) }
+
+      it 'returns the proper list of coordinates' do
+        expected = [
+          described_class.new(7, 6),
+          described_class.new(6, 5),
+          described_class.new(5, 4),
+          described_class.new(4, 3),
+          described_class.new(3, 2),
+          described_class.new(2, 1),
+          NullCoordinate.new
+        ]
+        diag_arr = diag_line_middle.diag_line_ne_sw
+        expect(diag_arr).to eq expected
+      end
+    end
+
+    context 'when the coordinate is at the bottom right of the board' do
+      subject(:diag_line_bot_right) { described_class.new(7, 1) }
+
+      it 'returns the proper list of coordinates' do
+        expected = [
+          NullCoordinate.new,
+          NullCoordinate.new,
+          NullCoordinate.new,
+          described_class.new(7, 1),
+          NullCoordinate.new,
+          NullCoordinate.new,
+          NullCoordinate.new
+        ]
+        diag_arr = diag_line_bot_right.diag_line_ne_sw
+        expect(diag_arr).to eq expected
+      end
+    end
+
+    context 'when the coordinate is at the bottom left of the board' do
+      subject(:diag_line_bot_left) { described_class.new(1, 1) }
+
+      it 'returns the proper list of coordinates' do
+        expected = [
+          described_class.new(4, 4),
+          described_class.new(3, 3),
+          described_class.new(2, 2),
+          described_class.new(1, 1),
+          NullCoordinate.new,
+          NullCoordinate.new,
+          NullCoordinate.new
+        ]
+        diag_arr = diag_line_bot_left.diag_line_ne_sw
+        expect(diag_arr).to eq expected
+      end
+    end
+  end
 end
