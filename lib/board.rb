@@ -31,6 +31,15 @@ class Board
     false
   end
 
+  def display_board(row = 6)
+    return unless row.between?(1, 6)
+
+    puts @board[row - 1].map(&:to_s).join('|')
+    puts '--------------'
+
+    display_board(row - 1)
+  end
+
   private
 
   def build_empty_board

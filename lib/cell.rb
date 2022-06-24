@@ -3,6 +3,10 @@
 class Cell
   attr_reader :piece, :position
 
+  def to_s
+    piece ? piece.to_s : ' '
+  end
+
   def initialize(checker_class, position = nil)
     @checker_class = checker_class
     @position = position
