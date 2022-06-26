@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Checker class holds info on who owns a piece, as well as colorizing its string representation
 class Checker
   attr_reader :color, :symbol
 

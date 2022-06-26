@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Coordinate holds info on a position in the board, it also implements helper methods to help collaborators find its neighbors.
 class Coordinate
   attr_reader :row, :col
 
@@ -27,7 +28,7 @@ class Coordinate
   def horiz_line
     [left.left.left, left.left, left, self, right, right.right, right.right.right]
   end
-  
+
   def diag_line_ne_sw
     [diag_ne.diag_ne.diag_ne, diag_ne.diag_ne, diag_ne, self, diag_sw, diag_sw.diag_sw, diag_sw.diag_sw.diag_sw]
   end

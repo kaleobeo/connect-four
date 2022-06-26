@@ -1,18 +1,20 @@
+# frozen_string_literal: true
+
+# Game class manages general gameflow and interaction with a user
 class Game
   def initialize(board = Board.new)
     @board = board
     @history = []
     create_players
   end
-  
+
   def play_game
     loop do
-      @board.display_board
       if turn_with_check(@player_one)
         conclusion(@player_one)
         break
       end
-      @board.display_board
+
       if turn_with_check(@player_two)
         conclusion(@player_two)
         break
@@ -22,6 +24,7 @@ class Game
 
   def player_turn(player)
     loop do
+      @board.display_board
       player_input = ask_column
       result = @board.drop_checker(player.color, player_input)
       if result

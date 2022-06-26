@@ -1,5 +1,6 @@
-require 'colorize'
+# frozen_string_literal: true
 
+require 'colorize'
 require_relative './cell'
 require_relative './null_coordinate'
 require_relative './coordinate'

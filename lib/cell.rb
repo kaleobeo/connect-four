@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Cell class holds the data of a piece that is inside it, and is in charge of making the checkers placed inside.
 class Cell
   attr_reader :piece, :position
 

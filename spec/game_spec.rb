@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../lib/library'
 
 describe Game do
@@ -18,7 +20,6 @@ describe Game do
     subject(:game_ask) { described_class.new }
 
     context 'when given a valid number to begin with' do
-
       before do
         valid_input = '4'
         allow(game_ask).to receive(:puts)
@@ -30,7 +31,7 @@ describe Game do
         expect(game_ask).to have_received(:gets).once
       end
     end
-    
+
     context 'when given two invalid inputs, and then a valid one' do
       before do
         symbol_input = '%'
@@ -54,12 +55,12 @@ describe Game do
     let(:cell_double) { instance_double(Cell) }
 
     context 'when the board successfully places a checker' do
-
       before do
         allow(player).to receive(:color).and_return(:red)
         allow(board).to receive(:drop_checker).and_return(cell_double)
         allow(cell_double).to receive(:position)
         allow(turn_game).to receive(:ask_column).and_return 4
+        allow(board).to receive(:display_board)
       end
 
       it 'only executes the loop once' do
@@ -69,13 +70,13 @@ describe Game do
     end
 
     context 'when the board fails to place a checker three times' do
-
       before do
         allow(player).to receive(:color).and_return(:red)
         allow(board).to receive(:drop_checker).and_return(false, false, false, cell_double)
         allow(cell_double).to receive(:position)
         allow(turn_game).to receive(:ask_column).and_return 4
         allow(turn_game).to receive(:puts)
+        allow(board).to receive(:display_board)
       end
 
       it 'executes the loop 4 times' do
@@ -95,6 +96,7 @@ describe Game do
         allow(play_game).to receive(:player_turn)
         allow(play_game).to receive(:player_turn)
         allow(play_game).to receive(:puts)
+        allow(board).to receive(:display_board)
       end
 
       it '8 turns are executed' do

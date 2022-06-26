@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Player class holds a color that corresponds to the player it represents
 class Player
   attr_reader :color
 

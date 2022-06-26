@@ -164,7 +164,7 @@ describe Coordinate do
           NullCoordinate.new,
           NullCoordinate.new,
           NullCoordinate.new
-          ]
+        ]
         diag_arr = diag_line_top_left.diag_line_nw_se
         expect(diag_arr).to eq expected
       end

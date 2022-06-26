@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
+# A null object of Coordinate
 class NullCoordinate
   attr_reader :row, :col
-  
+
   def up
     self
   end

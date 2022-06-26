@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../lib/library'
 
 describe Checker do
@@ -18,7 +20,7 @@ describe Checker do
       symbol = double('symbol')
       color_checker = described_class.new('red', symbol)
       allow(symbol).to receive(:send).with(:red)
-      "#{color_checker}"
+      color_checker.to_s
       expect(symbol).to have_received(:send).with(:red)
     end
   end

@@ -13,7 +13,6 @@ describe Cell do
     end
 
     context 'when the cell is empty' do
-
       it 'creates a new Checker to fill the cell' do
         place_cell.place_symbol(:blue)
         expect(checker_class).to have_received(:new).once

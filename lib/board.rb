@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Board class manages checking for wins, and the feature of dropping checkers down to the lowest point in a column. 
 class Board
   def initialize
     @board = build_empty_board
